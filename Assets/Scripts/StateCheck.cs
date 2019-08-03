@@ -12,12 +12,14 @@ public class StateCheck : MonoBehaviour
 
     private SpriteRenderer spriteRender;
     private Rigidbody2D body;
+    private Collider2D collision;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRender = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
+        collision = GetComponent<Collider2D>();
 
         //Checks the object tag and compares with current color state
         switch(GameManager.instance.colorState)
@@ -105,7 +107,7 @@ public class StateCheck : MonoBehaviour
         if(hasBeenDisabled)
         {
             spriteRender.sprite = activeSprite;
-            body.isKinematic = true;
+            collision.enabled = true;
             body.velocity = velocity;
             hasBeenDisabled = false;
         }
@@ -117,7 +119,7 @@ public class StateCheck : MonoBehaviour
         if(!hasBeenDisabled){
             spriteRender.sprite = inactiveSprite;
             velocity = body.velocity;
-            body.isKinematic = false;
+            collision.enabled = false;
             body.velocity = new Vector2(0,0);
             hasBeenDisabled = true;
         }
