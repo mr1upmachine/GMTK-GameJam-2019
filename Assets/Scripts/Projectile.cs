@@ -20,6 +20,11 @@ public class Projectile : MonoBehaviour
     // When colliding with another rigidbody2d
     void OnTriggerEnter2D (Collider2D hitInfo)
     {
+        //Ensures projectiles fired by enemies don't damage other enemys
+        if(hitInfo.gameObject.tag == gameObject.tag){
+            return;
+        }
+
         //check if colliding option has health script and deal damage if it does
         Health health = hitInfo.GetComponent<Health>();
         if(health != null)

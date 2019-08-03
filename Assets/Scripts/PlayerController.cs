@@ -65,7 +65,8 @@ public class PlayerController : MonoBehaviour
         if(waitFire > fireRate)
         {
             waitFire = 0;
-            Instantiate(projectile, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
+            bullet.tag = "Player";
         }
     }
 }
