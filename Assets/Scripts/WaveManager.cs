@@ -58,9 +58,22 @@ public class WaveManager : MonoBehaviour
     {
         for (;;)
         {
+            
             for (int i = 0; i < Mathf.Ceil(enemiesPerWave); i++)
             {
-                SpawnObject(ColorState.GREEN, GetRandomSpawnPoint());
+                switch (Mathf.Floor((i % 3)))
+                {
+                    case 0:
+                        SpawnObject(ColorState.GREEN, GetRandomSpawnPoint());
+                        break;
+                    case 1:
+                        SpawnObject(ColorState.BLUE, GetRandomSpawnPoint());
+                        break;
+                    case 2:
+                        SpawnObject(ColorState.RED, GetRandomSpawnPoint());
+                        break;
+                }
+                // SpawnObject(ColorState.GREEN, GetRandomSpawnPoint());
             }
             waveNumber++;
             waveMod += 0.1f;
