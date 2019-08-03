@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 96606239}
   - component: {fileID: 96606238}
   - component: {fileID: 96606241}
+  - component: {fileID: 96606242}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -220,6 +221,22 @@ MonoBehaviour:
   distance: 10
   heightDamping: 5
   rotationDamping: 3
+--- !u!114 &96606242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96606237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9893c7f02015df540a0f3d3717827ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
+  shakeDuration: 0
+  shakeAmount: 0.1
+  decreaseFactor: 1
 --- !u!1 &589668830
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,41 +857,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0.13911748
-      objectReference: {fileID: 0}
-    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.242612
-      objectReference: {fileID: 0}
-    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.0037599802
-      objectReference: {fileID: 0}
-    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2.162453
-      objectReference: {fileID: 0}
     - target: {fileID: 1584435721126225060, guid: 8cece414c90ff22428fede680a0fef5d,
         type: 3}
       propertyPath: m_Name
@@ -960,6 +942,41 @@ PrefabInstance:
         type: 3}
       propertyPath: acceleration
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.13911748
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.242612
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0037599802
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.162453
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6203563450051258340, guid: 8cece414c90ff22428fede680a0fef5d, type: 3}
