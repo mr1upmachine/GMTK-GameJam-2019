@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     float horizontal;
     float vertical;
     float moveLimiter = 0.7f;
-    public float runSpeed = 20.0f;
+    public float acceleration = 50.0f;
+    public float maxSpeed = 20.0f;
 
     public float fireRate = 0.5f;
     float waitFire;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         //get Rigidbody2D on start
         body = GetComponent<Rigidbody2D>();
+        body.drag = 5;
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class PlayerController : MonoBehaviour
         Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
         transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
 
-        if(Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             Shoot();
         }
@@ -46,14 +48,19 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //keep diagonal movement from being too fast
-        if(horizontal != 0 || vertical != 0)
+        if (horizontal != 0 && vertical != 0)
         {
-            horizontal *= moveLimiter;
-            vertical *= moveLimiter;
+            body.AddForce(new Vector2(horizontal * acceleration * 0.65f, vertical * acceleration * 0.65f));
+        } else
+        {
+            body.AddForce(new Vector2(horizontal * acceleration, vertical * acceleration));
         }
 
-        //move player
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        if (body.velocity.magnitude > maxSpeed)
+        {
+            body.velocity = body.velocity.normalized * maxSpeed;
+            Debug.Log(body.velocity);
+        }
     }
 
     void Shoot()
@@ -62,7 +69,7 @@ public class PlayerController : MonoBehaviour
         waitFire += Time.deltaTime;
 
         //check firing cooldown to ensure projectiles aren't being fired too quickly
-        if(waitFire > fireRate)
+        if (waitFire > fireRate)
         {
             waitFire = 0;
             GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);

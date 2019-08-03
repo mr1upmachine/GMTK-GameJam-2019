@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 96606240}
   - component: {fileID: 96606239}
   - component: {fileID: 96606238}
+  - component: {fileID: 96606241}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -203,6 +204,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &96606241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96606237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5150e40a11b6db346b03977da8db0ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1193346760}
 --- !u!1 &589668830
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +475,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21, y: 9.02}
   m_EdgeRadius: 0
+--- !u!1 &1193346760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1584435721126225060, guid: 8cece414c90ff22428fede680a0fef5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1615987962}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1334103777
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +810,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584435721126225063, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584435721126225063, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584435721126225063, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584435721126225062, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aac64363c40f45c4d977926e38163545,
+        type: 3}
+    - target: {fileID: 1584435721126225061, guid: 8cece414c90ff22428fede680a0fef5d,
+        type: 3}
+      propertyPath: acceleration
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cece414c90ff22428fede680a0fef5d, type: 3}
