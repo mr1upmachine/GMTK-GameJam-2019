@@ -43,12 +43,6 @@ public class PlayerStatechange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //TODO: Remove after testing
-        if(Input.GetButtonDown("Fire2"))
-        {
-            GameManager.instance.ChangeColorState();
-        }
-
         //sets player sprite based on game state
         switch(GameManager.instance.colorState)
         {

@@ -15,7 +15,10 @@ public class GameManager : MonoBehaviour
     // public event OnStateChangeHandler OnStateChange;
     public GameState gameState { get; private set; }
     public ColorState colorState;
+    public int scoreForStateChange = 1000;
+
     private int score;
+    private int adjustedScore;
 
     private void Awake()
     {
@@ -40,10 +43,13 @@ public class GameManager : MonoBehaviour
         score = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+        if(adjustedScore >= scoreForStateChange)
+        {
+            adjustedScore = 0;
+            ChangeColorState();
+
+        }
     }
 
     public void ChangeColorState()
@@ -63,6 +69,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void IncrementGameScore(int pointValue)
+    {
+        adjustedScore += pointValue;
+        score += pointValue;
+    }
+
     public void UpdateGameScore(int score)
     {
         if (score == this.score)
@@ -74,7 +86,7 @@ public class GameManager : MonoBehaviour
             this.score = score;
         }
     }
-    
+
     public int GetCurrentScore()
     {
         return score;
