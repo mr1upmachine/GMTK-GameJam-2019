@@ -23,34 +23,34 @@ public class StateCheck : MonoBehaviour
         switch(GameManager.instance.colorState)
         {
             case ColorState.RED:
-                if(gameObject.tag.Contains("Red") && currentState != 1){
+                if(gameObject.tag.Contains("RED") && currentState != 1){
                     activate();
-                }else if(!gameObject.tag.Contains("Red") && currentState != 1){
+                }else if(!gameObject.tag.Contains("RED") && currentState != 1){
                     deactivate();
                 }
                 currentState = 1;
                 break;
             case ColorState.GREEN:
-                if(gameObject.tag.Contains("Green") && currentState != 2){
+                if(gameObject.tag.Contains("GREEN") && currentState != 2){
                     activate();
-                }else if(!gameObject.tag.Contains("Green") && currentState != 2){
+                }else if(!gameObject.tag.Contains("GREEN") && currentState != 2){
                     deactivate();
                 }
                 currentState = 2;
                 break;
             case ColorState.BLUE:
-                if(gameObject.tag.Contains("Blue") && currentState != 3){
+                if(gameObject.tag.Contains("BLUE") && currentState != 3){
                     activate();
-                }else if(!gameObject.tag.Contains("Blue") && currentState != 3){
+                }else if(!gameObject.tag.Contains("BLUE") && currentState != 3){
                     deactivate();
                 }
                 currentState = 3;
                 break;
             default:
                 Debug.Log("Can't find color state, defaulting to red!");
-                if(gameObject.tag.Contains("Red")){
+                if(gameObject.tag.Contains("RED")){
                     activate();
-                }else if(!gameObject.tag.Contains("Red")){
+                }else if(!gameObject.tag.Contains("RED")){
                     deactivate();
                 }
                 currentState = 1;
@@ -64,34 +64,34 @@ public class StateCheck : MonoBehaviour
         switch(GameManager.instance.colorState)
         {
             case ColorState.RED:
-                if(gameObject.tag.Contains("Red") && currentState != 1){
+                if(gameObject.tag.Contains("RED") && currentState != 1){
                     activate();
-                }else if(!gameObject.tag.Contains("Red") && currentState != 1){
+                }else if(!gameObject.tag.Contains("RED") && currentState != 1){
                     deactivate();
                 }
                 currentState = 1;
                 break;
             case ColorState.GREEN:
-                if(gameObject.tag.Contains("Green") && currentState != 2){
+                if(gameObject.tag.Contains("GREEN") && currentState != 2){
                     activate();
-                }else if(!gameObject.tag.Contains("Green") && currentState != 2){
+                }else if(!gameObject.tag.Contains("GREEN") && currentState != 2){
                     deactivate();
                 }
                 currentState = 2;
                 break;
             case ColorState.BLUE:
-                if(gameObject.tag.Contains("Blue") && currentState != 3){
+                if(gameObject.tag.Contains("BLUE") && currentState != 3){
                     activate();
-                }else if(!gameObject.tag.Contains("Blue") && currentState != 3){
+                }else if(!gameObject.tag.Contains("BLUE") && currentState != 3){
                     deactivate();
                 }
                 currentState = 3;
                 break;
             default:
                 Debug.Log("Can't find color state, defaulting to red!");
-                if(gameObject.tag.Contains("Red")){
+                if(gameObject.tag.Contains("RED")){
                     activate();
-                }else if(!gameObject.tag.Contains("Red")){
+                }else if(!gameObject.tag.Contains("RED")){
                     deactivate();
                 }
                 currentState = 1;
