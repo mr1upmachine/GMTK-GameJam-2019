@@ -10,18 +10,6 @@ public class SceneManagerScript : MonoBehaviour
     public string gameOver;
     public string mainMenu;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void LoadNextScene()
     {
         if (nextScene != null)
@@ -45,6 +33,4 @@ public class SceneManagerScript : MonoBehaviour
             SceneManager.LoadScene(mainMenu);
         }
     }
-
-
 }
