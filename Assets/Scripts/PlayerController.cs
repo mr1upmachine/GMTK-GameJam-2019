@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //get Rigidbody2D on start
         body = GetComponent<Rigidbody2D>();
     }
 
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         horizontalL = Input.GetAxisRaw("HorizontalL");
         verticalL = Input.GetAxisRaw("VerticalL");
 
+        //Get mouse position and face player towards it
         Vector3 mouseScreen = Input.mousePosition;
         Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
         transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
@@ -42,26 +44,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Used for physics interactions
     void FixedUpdate()
     {
+        //keep diagonal movement from being too fast
         if(horizontalL != 0 || verticalL != 0)
         {
             horizontalL *= moveLimiter;
             verticalL *= moveLimiter;
         }
 
+        //move player
         body.velocity = new Vector2(horizontalL * runSpeed, verticalL * runSpeed);
     }
 
     void Shoot()
     {
+        //increment firing cooldown
         waitFire += Time.deltaTime;
 
+        //check firing cooldown to ensure projectiles aren't being fired too quickly
         if(waitFire > fireRate)
         {
             waitFire = 0;
             Instantiate(projectile, transform.position, transform.rotation);
-
         }
     }
 }
