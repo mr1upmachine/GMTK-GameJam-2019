@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class WaveManager : MonoBehaviour
 {
     public GameObject enemyFab;
     public bool stopSpawning;
@@ -98,7 +98,6 @@ public class EnemySpawner : MonoBehaviour
 
     private GameObject GetRandomSpawnPoint()
     {
-
-        return spawnPoints[Random.Range(0, spawnPoints.Length - 1)];
+        return spawnPoints[Random.Range(0, spawnPoints.Length)];
     }
 }
