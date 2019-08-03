@@ -7,10 +7,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D body;
 
-    float horizontalL;
-    float verticalL;
-    float horizontalR;
-    float verticalR;
+    float horizontal;
+    float vertical;
     float moveLimiter = 0.7f;
     public float runSpeed = 20.0f;
 
@@ -30,8 +28,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalL = Input.GetAxisRaw("HorizontalL");
-        verticalL = Input.GetAxisRaw("VerticalL");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
         //Get mouse position and face player towards it
         Vector3 mouseScreen = Input.mousePosition;
@@ -48,14 +46,14 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //keep diagonal movement from being too fast
-        if(horizontalL != 0 || verticalL != 0)
+        if(horizontal != 0 || vertical != 0)
         {
-            horizontalL *= moveLimiter;
-            verticalL *= moveLimiter;
+            horizontal *= moveLimiter;
+            vertical *= moveLimiter;
         }
 
         //move player
-        body.velocity = new Vector2(horizontalL * runSpeed, verticalL * runSpeed);
+        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
     }
 
     void Shoot()
