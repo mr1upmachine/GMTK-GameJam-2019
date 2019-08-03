@@ -6,14 +6,16 @@ using UnityEngine;
 public enum ColorState { RED, GREEN, BLUE }
 public enum GameState { MAIN_MENU, GAME_OVER }
 
-public delegate void OnStateChangeHandler();
+// Commenting out temporarily because I don't know what I wanna do with this atm
+// public delegate void OnStateChangeHandler();
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    public event OnStateChangeHandler OnStateChange;
+    // public event OnStateChangeHandler OnStateChange;
     public GameState gameState { get; private set; }
     public ColorState colorState;
+    private int score;
 
     private void Awake()
     {
@@ -33,6 +35,9 @@ public class GameManager : MonoBehaviour
     {
         // init the original color state to red on object start (post awake)
         colorState = ColorState.RED;
+
+        // init total score
+        score = 0;
     }
 
     // Update is called once per frame
@@ -58,4 +63,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdateGameScore(int score)
+    {
+        if (score == this.score)
+        {
+            Debug.Log("Score was the same, not updating");
+        }
+        else
+        {
+            this.score = score;
+        }
+    }
+    
+    public int GetCurrentScore()
+    {
+        return score;
+    }
 }
