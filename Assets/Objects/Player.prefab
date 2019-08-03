@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 691789709}
   - component: {fileID: 1193346761}
   - component: {fileID: 1193346762}
+  - component: {fileID: 7351364205406475463}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -101,7 +102,7 @@ MonoBehaviour:
   maxSpeed: 20
   fireRate: 0.15
   position: {fileID: 0}
-  projectile: {fileID: 7342947162813356312, guid: a6ae7ab2cb9bc2f44a1ea72c2f9ae492,
+  projectile: {fileID: 5554037858338813807, guid: a6ae7ab2cb9bc2f44a1ea72c2f9ae492,
     type: 3}
 --- !u!50 &1584435721126225056
 Rigidbody2D:
@@ -137,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  pointValue: 100
 --- !u!58 &1193346761
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,3 +170,19 @@ MonoBehaviour:
   redSprite: {fileID: 21300000, guid: aac64363c40f45c4d977926e38163545, type: 3}
   greenSprite: {fileID: 21300000, guid: aac64363c40f45c4d977926e38163545, type: 3}
   blueSprite: {fileID: 21300000, guid: aac64363c40f45c4d977926e38163545, type: 3}
+--- !u!58 &7351364205406475463
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584435721126225060}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.06873019}
+  serializedVersion: 2
+  m_Radius: 1.1673062

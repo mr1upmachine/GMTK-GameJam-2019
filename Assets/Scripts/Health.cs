@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int health = 1;
+    public int pointValue = 100;
 
     //projectiles call this function to damage a character
     public void TakeDamage(int damage)
@@ -19,6 +20,7 @@ public class Health : MonoBehaviour
 
     void Die()
     {
+        GameManager.instance.IncrementGameScore(pointValue);
         Destroy(gameObject);
     }
 }
