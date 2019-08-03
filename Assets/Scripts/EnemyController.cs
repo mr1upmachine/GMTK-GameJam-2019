@@ -11,20 +11,22 @@ public class EnemyController : MonoBehaviour
     public float xDiff;
     public float yDiff;
 
-    public Transform enemyPosition;
+    public GameObject playerRef;
+
+    public Vector2 enemyPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         enemyPosition = transform.position;
-        xDiff = PlayerController.position.x - ememyPosion.x;
-        yDiff = PlayerController.position.y - enemyPosition.y;
+        xDiff = playerRef.transform.position.x - enemyPosition.x;
+        yDiff = playerRef.transform.position.y - enemyPosition.y;
 
         if (xDiff > 0)
         {
@@ -44,6 +46,21 @@ public class EnemyController : MonoBehaviour
             yVelocity = -enemySpeed;
         }
 
+        Move();
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 8)
+        {
+            //xVelocity = Random.Range(-1, 1) * 2;
+            yVelocity = 10;
+            Move();
+        }
+    }
+
+    private void Move()
+    {
         GetComponent<Rigidbody2D>().velocity = new Vector2(xVelocity, yVelocity);
     }
 }
