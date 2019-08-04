@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
     Rigidbody2D body;
 
     public float acceleration = 40.0f;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float shootKnockback = 5f;
 
     public float fireRate = 0.5f;
+    float waitFire;
 
     public Transform position;
     public GameObject projectile;
@@ -75,7 +77,7 @@ public class PlayerController : MonoBehaviour
     void Shoot()
     {
         //increment firing cooldown
-        float waitFire += Time.deltaTime;
+        waitFire += Time.deltaTime;
 
         //check firing cooldown to ensure projectiles aren't being fired too quickly
         if (waitFire > fireRate)
