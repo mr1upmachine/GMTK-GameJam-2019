@@ -34,9 +34,13 @@ public class PlayerController : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
 
         //Get mouse position and face player towards it
-        Vector3 mouseScreen = Input.mousePosition;
-        Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
-        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
+        if (GameManager.instance.gameState != GameState.PAUSE)
+        {
+            Vector3 mouseScreen = Input.mousePosition;
+            Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
+        }
+
 
         if (Input.GetButton("Fire1"))
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 // valid color states
 public enum ColorState { RED, GREEN, BLUE }
-public enum GameState { MAIN_MENU, GAME_OVER }
+public enum GameState { MAIN_MENU, PLAY, PAUSE, GAME_OVER }
 
 // Commenting out temporarily because I don't know what I wanna do with this atm
 // public delegate void OnStateChangeHandler();
@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     private int score;
     private int adjustedScore;
+
+    public GameObject PauseMenu;
 
     private void Awake()
     {
@@ -36,6 +38,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PauseMenu.SetActive(false);
+
         // init the original color state to red on object start (post awake)
         colorState = ColorState.RED;
 
@@ -49,6 +53,11 @@ public class GameManager : MonoBehaviour
             adjustedScore = 0;
             ChangeColorState();
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseControl();
         }
     }
 
@@ -90,5 +99,22 @@ public class GameManager : MonoBehaviour
     public int GetCurrentScore()
     {
         return score;
+    }
+
+    // controls the pausing of the scene
+    public void PauseControl()
+    {
+        if (Time.timeScale == 1)
+        {
+            gameState = GameState.PAUSE;
+            Time.timeScale = 0;
+            PauseMenu.SetActive(true);
+        }
+        else if (Time.timeScale == 0)
+        {
+            gameState = GameState.PLAY;
+            Time.timeScale = 1;
+            PauseMenu.SetActive(false);
+        }
     }
 }
