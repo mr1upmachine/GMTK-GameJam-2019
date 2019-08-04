@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 20.0f;
     public int drag = 5;
     public int shootDrag = 25;
+    public float shootKnockback = 5f;
 
     public float fireRate = 0.5f;
     float waitFire;
@@ -88,11 +89,13 @@ public class PlayerController : MonoBehaviour
             GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
             bullet.tag = "Player";
 
+            // Pushes the player back slightly when 
             float degreeX = body.rotation * -1f;
             float degreeY = body.rotation;
             float fX = Mathf.Sin(degreeX * Mathf.Deg2Rad);
             float fY = Mathf.Cos(degreeY * Mathf.Deg2Rad);
-            body.AddForce(new Vector2(acceleration * fX * -5f, acceleration * fY * -5f));
+            float modifiers = acceleration * shootKnockback * -1f;
+            body.AddForce(new Vector2(modifiers * fX, modifiers * fY));
         }
     }
 }
