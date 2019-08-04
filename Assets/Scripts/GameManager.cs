@@ -104,4 +104,10 @@ public class GameManager : MonoBehaviour
         gameState = GameState.PLAY;
         Time.timeScale = 1;
     }
+
+    public void GameOver()
+    {
+        gameState = GameState.GAME_OVER;
+        Time.timeScale = 0;
+    }
 }

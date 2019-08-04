@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Get mouse position and face player towards it
-        if (GameManager.instance.gameState != GameState.PAUSE)
+        if (GameManager.instance.gameState != GameState.PAUSE && GameManager.instance.gameState != GameState.GAME_OVER)
         {
             Vector3 mouseScreen = Input.mousePosition;
             Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);

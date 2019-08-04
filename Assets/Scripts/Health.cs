@@ -20,7 +20,12 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        GameManager.instance.IncrementGameScore(pointValue);
-        Destroy(gameObject);
+        if(gameObject.tag == "Player")
+        {
+            GameManager.instance.GameOver();
+        }else{
+            GameManager.instance.IncrementGameScore(pointValue);
+            Destroy(gameObject);
+        }
     }
 }

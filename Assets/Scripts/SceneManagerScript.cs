@@ -24,6 +24,10 @@ public class SceneManagerScript : MonoBehaviour
 
     void Update()
     {
+        if(GameManager.instance.gameState == GameState.GAME_OVER){
+            GameOver();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameManager.instance.gameState == GameState.PLAY)
@@ -63,6 +67,11 @@ public class SceneManagerScript : MonoBehaviour
             SceneManager.LoadScene(mainMenu);
             GameManager.instance.PlayGame();
         }
+    }
+
+    public void GameOver()
+    {
+        if (GameOverMenu) GameOverMenu.SetActive(true);
     }
 
     public void PauseGame()
