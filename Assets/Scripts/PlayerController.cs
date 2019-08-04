@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     float moveLimiter = 0.7f;
     public float acceleration = 50.0f;
     public float maxSpeed = 20.0f;
+    public int drag = 5;
+    public int shootDrag = 25;
 
     public float fireRate = 0.5f;
     float waitFire;
@@ -19,12 +21,14 @@ public class PlayerController : MonoBehaviour
     public Transform position;
     public GameObject projectile;
 
+    private bool isFiring = false;
+
     // Start is called before the first frame update
     void Start()
     {
         //get Rigidbody2D on start
         body = GetComponent<Rigidbody2D>();
-        body.drag = 5;
+        body.drag = drag;
     }
 
     // Update is called once per frame
@@ -45,7 +49,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Fire1"))
         {
             Shoot();
+            body.drag = shootDrag;
+
+            return;
         }
+
+        body.drag = drag;
     }
 
     //Used for physics interactions
@@ -78,6 +87,12 @@ public class PlayerController : MonoBehaviour
             waitFire = 0;
             GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
             bullet.tag = "Player";
+
+            float degreeX = body.rotation * -1f;
+            float degreeY = body.rotation;
+            float fX = Mathf.Sin(degreeX * Mathf.Deg2Rad);
+            float fY = Mathf.Cos(degreeY * Mathf.Deg2Rad);
+            body.AddForce(new Vector2(acceleration * fX * -5f, acceleration * fY * -5f));
         }
     }
 }
