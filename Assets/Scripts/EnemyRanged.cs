@@ -35,7 +35,7 @@ public class EnemyRanged : MonoBehaviour
 
     void FixedUpdate() {
         ColorState color = GameManager.instance.colorState;
-        if (gameObject.tag.Equals(color.ToString())){
+        if (gameObject.tag.Equals(color.ToString()) && !health.dead){
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90);
         }
     }

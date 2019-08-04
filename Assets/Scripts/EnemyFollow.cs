@@ -13,12 +13,16 @@ public class EnemyFollow : MonoBehaviour
     private Rigidbody2D body;
     private ParticleSystem particle;
     private SpriteRenderer sprite;
+    private Health eHealth;
+    private StateCheck state;
 
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        eHealth = GetComponent<Health>();
+        state = GetComponent<StateCheck>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         particle = GetComponent<ParticleSystem>();
         sprite = GetComponent<SpriteRenderer>();
@@ -27,7 +31,7 @@ public class EnemyFollow : MonoBehaviour
     void FixedUpdate()
     {
         ColorState color = GameManager.instance.colorState;
-        if (gameObject.tag.Contains(color.ToString())){
+        if (gameObject.tag.Contains(color.ToString()) && !state.isDisabled && !eHealth.dead){
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90);
         }
         if(Vector2.Distance(transform.position, target.position) > stoppingDistance)
@@ -36,7 +40,10 @@ public class EnemyFollow : MonoBehaviour
             body.AddForce(relativePos * 2);
         }
 
-        body.velocity = Vector3.ClampMagnitude(body.velocity, maxSpeed);
+        if(!state.isDisabled)
+        {
+            body.velocity = Vector3.ClampMagnitude(body.velocity, maxSpeed);
+        }
     }
 
     void OnCollisionEnter2D (Collision2D hitInfo)
@@ -46,14 +53,17 @@ public class EnemyFollow : MonoBehaviour
             return;
         }
 
-        //check if colliding option has health script and deal damage if it does
-        Health health = hitInfo.gameObject.GetComponent<Health>();
-        if(health != null)
+        if(hitInfo.gameObject.tag != "Arena")
         {
-            health.TakeDamage(damage);
+            //check if colliding option has health script and deal damage if it does
+            Health health = hitInfo.gameObject.GetComponent<Health>();
+            if(health != null)
+            {
+                health.TakeDamage(damage);
+            }
+            particle.Play();
+            sprite.enabled = false;
+            Destroy(gameObject, 1.5f);
         }
-        particle.Play();
-        sprite.enabled = false;
-        Destroy(gameObject, 1.5f);
     }
 }
