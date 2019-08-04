@@ -8,6 +8,7 @@ TagManager:
   - GREEN
   - BLUE
   - RED
+  - Arena
   layers:
   - Default
   - TransparentFX
