@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6376127678255324574}
   - component: {fileID: 1710613254}
   - component: {fileID: 1710613259}
+  - component: {fileID: 1710613261}
   m_Layer: 0
   m_Name: Enemy_Red_Small
   m_TagString: RED
@@ -92,11 +93,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6478465185843119821}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -193,7 +194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeSprite: {fileID: 21300000, guid: f2fc98ef74762f640af17f5c8784f1e8, type: 3}
   inactiveSprite: {fileID: 21300000, guid: ad1cd6043044b8e44846701472cd6174, type: 3}
-  velocity: {x: 0, y: 0}
 --- !u!114 &1710613259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +208,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   pointValue: 100
+--- !u!114 &1710613261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478465185843119821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe2fc8ddb485384ba61d36ebc737c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 6
+  stoppingDistance: 0

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1026760279683246439}
   - component: {fileID: 1927861354}
   - component: {fileID: 1927861359}
+  - component: {fileID: 883436208}
   m_Layer: 0
   m_Name: Enemy_Blue_Large
   m_TagString: BLUE
@@ -92,7 +93,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5704248712892012660}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -135,7 +136,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeSprite: {fileID: 21300000, guid: 919df24e3d796d946bdd456bc3b2737d, type: 3}
   inactiveSprite: {fileID: 21300000, guid: 6e8ad8fce8e6f844b90b6a3f3ab12952, type: 3}
-  velocity: {x: 0, y: 0}
 --- !u!114 &1927861359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,3 +150,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   pointValue: 500
+--- !u!114 &883436208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704248712892012660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545499c15f5892a468fa122cd1db2f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTimeToFire: 1
+  maxTimeToFire: 3
+  projectileCount: 6
+  projectile: {fileID: 7987205786969535042, guid: 9c1e571a230abc549b0f450b43439a7c,
+    type: 3}

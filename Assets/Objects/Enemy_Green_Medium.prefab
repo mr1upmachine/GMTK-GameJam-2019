@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9116789233185768259}
   - component: {fileID: 826158187}
   - component: {fileID: 826158192}
+  - component: {fileID: 1352077926}
   m_Layer: 0
   m_Name: Enemy_Green_Medium
   m_TagString: GREEN
@@ -92,7 +93,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137799332516789527}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -145,7 +146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeSprite: {fileID: 21300000, guid: 0ed3a8012fe72f9459096e7182498f41, type: 3}
   inactiveSprite: {fileID: 21300000, guid: 8e04b389369418a46ad900305305ba1b, type: 3}
-  velocity: {x: 0, y: 0}
 --- !u!114 &826158192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,3 +160,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   pointValue: 300
+--- !u!114 &1352077926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137799332516789527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7eaf9d0758eaff45951e7c66aa95b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 25
+  minTimeToFire: 1
+  maxTimeToFire: 5
+  projectile: {fileID: 2716225102401422746, guid: 737131011d72e40408a9fe39c0d6f1e1,
+    type: 3}
