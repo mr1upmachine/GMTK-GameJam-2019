@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
         {
             adjustedScore = 0;
             ChangeColorState();
-
         }
     }
 
@@ -62,11 +61,11 @@ public class GameManager : MonoBehaviour
         {
             colorState = ColorState.BLUE;
         }
-        else
+        else // if state is BLUE
         {
-            // if state is BLUE
             colorState = ColorState.RED;
         }
+        Debug.Log(colorState);
     }
 
     public void IncrementGameScore(int pointValue)
