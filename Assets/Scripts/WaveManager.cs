@@ -4,7 +4,28 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    public GameObject enemyFab;
+    public GameObject greenSmall;
+    public GameObject greenMedium;
+    public GameObject greenLarge;
+    public GameObject redSmall;
+    public GameObject redMedium;
+    public GameObject redLarge;
+    public GameObject blueSmall;
+    public GameObject blueMedium;
+    public GameObject blueLarge;
+
+    public int greenSmallPercentage;
+    public int greenMediumPercentage;
+    public int greenLargePercentage;
+
+    public int blueSmallPercentage;
+    public int blueMediumPercentage;
+    public int blueLargePercentage;
+
+    public int redSmallPercentage;
+    public int redMediumPercentage;
+    public int redLargePercentage;
+
     public bool stopSpawning;
     public float maxWaveSpawnInterval; // max and min for speeding up wave generation as time passes
     public float minWaveSpawnInterval;
@@ -46,7 +67,7 @@ public class WaveManager : MonoBehaviour
         // InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
     }
 
-    public void SpawnObject(ColorState color, GameObject spawnPoint)
+    public void SpawnObject(ColorState color, GameObject spawnPoint, GameObject enemyFab)
     {
         // will change this to be spawnPoint.position and rotation instead of `this`
         // also might need to make handling to spawn enemies of a specific color
@@ -64,13 +85,13 @@ public class WaveManager : MonoBehaviour
                 switch (Mathf.Floor((i % 3)))
                 {
                     case 0:
-                        SpawnObject(ColorState.GREEN, GetRandomSpawnPoint());
+                        SpawnObject(ColorState.GREEN, GetRandomSpawnPoint(), GetGreenEnemy());
                         break;
                     case 1:
-                        SpawnObject(ColorState.BLUE, GetRandomSpawnPoint());
+                        SpawnObject(ColorState.BLUE, GetRandomSpawnPoint(), GetBlueEnemy());
                         break;
                     case 2:
-                        SpawnObject(ColorState.RED, GetRandomSpawnPoint());
+                        SpawnObject(ColorState.RED, GetRandomSpawnPoint(), GetRedEnemy());
                         break;
                 }
                 // SpawnObject(ColorState.GREEN, GetRandomSpawnPoint());
@@ -78,9 +99,9 @@ public class WaveManager : MonoBehaviour
             waveNumber++;
             waveMod += 0.1f;
             UpdateWaveVariables();
-            Debug.Log("Wave " + waveNumber + " completed");
-            Debug.Log("New Wave Delay: " + spawnDelay.ToString());
-            Debug.Log("New Enemies Per Wave: " + enemiesPerWave.ToString());
+            //Debug.Log("Wave " + waveNumber + " completed");
+            //Debug.Log("New Wave Delay: " + spawnDelay.ToString());
+            //Debug.Log("New Enemies Per Wave: " + enemiesPerWave.ToString());
             yield return new WaitForSeconds(spawnDelay);
         }
     }
@@ -112,5 +133,105 @@ public class WaveManager : MonoBehaviour
     private GameObject GetRandomSpawnPoint()
     {
         return spawnPoints[Random.Range(0, spawnPoints.Length)];
+    }
+
+    private GameObject GetRedEnemy()
+    {
+        int secondMax = redSmallPercentage + redMediumPercentage;
+        int thirdMax = secondMax + redLargePercentage;
+        int chance = Random.Range(1, 100);
+
+        if (chance <= redSmallPercentage)
+        {
+            return redSmall;
+        }
+        else if (chance > redSmallPercentage && chance <= secondMax)
+        {
+            return redMedium;
+        }
+        else
+        {
+            return redLarge;
+        }
+
+        /*
+        switch (Random.Range(0,2))
+        {
+            case 0:
+                return redSmall;
+            case 1:
+                return redMedium;
+            case 2:
+                return redLarge;
+            default:
+                return redSmall;
+        }
+        */
+    }
+
+    private GameObject GetBlueEnemy()
+    {
+        int secondMax = blueSmallPercentage + blueMediumPercentage;
+        int thirdMax = secondMax + blueLargePercentage;
+        int chance = Random.Range(1, 100);
+
+        if (chance <= blueSmallPercentage)
+        {
+            return blueSmall;
+        }
+        else if (chance > blueSmallPercentage && chance <= secondMax)
+        {
+            return blueMedium;
+        }
+        else
+        {
+            return blueLarge;
+        }
+        /*
+        switch (Random.Range(0,2))
+        {
+            case 0:
+                return blueSmall;
+            case 1:
+                return blueMedium;
+            case 2:
+                return blueLarge;
+            default:
+                return blueSmall;
+        }
+        */
+    }
+
+    private GameObject GetGreenEnemy()
+    {
+        int secondMax = greenSmallPercentage + greenMediumPercentage;
+        int thirdMax = secondMax + greenLargePercentage;
+        int chance = Random.Range(1, 100);
+
+        if (chance <= greenSmallPercentage)
+        {
+            return greenSmall;
+        }
+        else if (chance > greenSmallPercentage && chance <= secondMax)
+        {
+            return greenMedium;
+        }
+        else
+        {
+            return greenLarge;
+        }
+        /*
+        switch (Random.Range(0,2))
+        {
+            case 0:
+                return greenSmall;
+            case 1:
+                return greenMedium;
+            case 2:
+                return greenLarge;
+            default:
+                return greenSmall;
+        }
+        */
     }
 }
