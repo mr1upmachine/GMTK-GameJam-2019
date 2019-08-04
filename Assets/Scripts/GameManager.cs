@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     public GameState gameState { get; private set; }
     public ColorState colorState;
     public int scoreForStateChange = 1000;
-
     private int score;
     private int adjustedScore;
 
