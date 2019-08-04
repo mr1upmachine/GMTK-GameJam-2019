@@ -7,9 +7,12 @@ public class EnemyFollow : MonoBehaviour
 
     public float maxSpeed;
     public float stoppingDistance;
+    public int damage;
 
     private Transform target;
     private Rigidbody2D body;
+    private ParticleSystem particle;
+    private SpriteRenderer sprite;
 
 
     // Start is called before the first frame update
@@ -17,6 +20,8 @@ public class EnemyFollow : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        particle = GetComponent<ParticleSystem>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -32,5 +37,23 @@ public class EnemyFollow : MonoBehaviour
         }
 
         body.velocity = Vector3.ClampMagnitude(body.velocity, maxSpeed);
+    }
+
+    void OnCollisionEnter2D (Collision2D hitInfo)
+    {
+        //Ensures projectiles fired by enemies don't damage other enemys
+        if(hitInfo.gameObject.tag == gameObject.tag){
+            return;
+        }
+
+        //check if colliding option has health script and deal damage if it does
+        Health health = hitInfo.gameObject.GetComponent<Health>();
+        if(health != null)
+        {
+            health.TakeDamage(damage);
+        }
+        particle.Play();
+        sprite.enabled = false;
+        Destroy(gameObject, 1.5f);
     }
 }

@@ -11,11 +11,13 @@ public class EnemyRanged : MonoBehaviour
     public float maxTimeToFire;
     public GameObject projectile;
     private float nextFire;
+    private Health health;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        health = GetComponent<Health>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         nextFire = Time.time + Random.Range(minTimeToFire, maxTimeToFire);
         InvokeRepeating("RandomMovement", 1.0f, 0.5f);
@@ -24,7 +26,7 @@ public class EnemyRanged : MonoBehaviour
     void Update() {
         ColorState color = GameManager.instance.colorState;
         //Randomly fire in intervals set between two different variables
-        if(gameObject.tag.Contains(color.ToString()) && Time.time >= nextFire)
+        if(gameObject.tag.Equals(color.ToString()) && Time.time >= nextFire && !health.dead)
         {
             nextFire = Time.time + Random.Range(minTimeToFire, maxTimeToFire);
             Fire();
@@ -33,7 +35,7 @@ public class EnemyRanged : MonoBehaviour
 
     void FixedUpdate() {
         ColorState color = GameManager.instance.colorState;
-        if (gameObject.tag.Contains(color.ToString())){
+        if (gameObject.tag.Equals(color.ToString())){
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90);
         }
     }
