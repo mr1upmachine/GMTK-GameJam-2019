@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class SceneManagerScript : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class SceneManagerScript : MonoBehaviour
     public bool hasGameOverMenu;
     public GameObject PauseMenu;
     public GameObject GameOverMenu;
+    public TextMeshProUGUI score;
+    public TextMeshProUGUI wave;
+    public WaveManager waveManager;
 
     // This script will simply instantiate the Prefab when the game starts.
     void Start()
@@ -20,6 +24,9 @@ public class SceneManagerScript : MonoBehaviour
         PlayGame();
         if (hasPauseMenu && PauseMenu == null) Instantiate(PauseMenu);
         if (hasGameOverMenu && GameOverMenu == null) Instantiate(GameOverMenu);
+
+        score.text = GameManager.instance.GetCurrentScore().ToString();
+        wave.text = waveManager.GetWaveNumber().ToString();
     }
 
     void Update()
@@ -43,6 +50,16 @@ public class SceneManagerScript : MonoBehaviour
         if (Input.GetKeyDown("r"))
         {
             ReloadCurrentScene();
+        }
+
+        if (GameManager.instance.GetCurrentScore() > int.Parse(score.text))
+        {
+            score.text = GameManager.instance.GetCurrentScore().ToString();
+        }
+
+        if (waveManager.GetWaveNumber() > int.Parse(wave.text))
+        {
+            wave.text = waveManager.GetWaveNumber().ToString();
         }
     }
 
