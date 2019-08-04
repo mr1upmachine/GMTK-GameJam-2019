@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     // public event OnStateChangeHandler OnStateChange;
-    public GameState gameState { get; private set; }
+    public GameState gameState { get; set; }
     public ColorState colorState;
     public int scoreForStateChange = 1000;
 
@@ -107,5 +107,10 @@ public class GameManager : MonoBehaviour
     {
         gameState = GameState.GAME_OVER;
         Time.timeScale = 0;
+    }
+
+    public void SetScore(int score)
+    {
+        this.score = score;
     }
 }

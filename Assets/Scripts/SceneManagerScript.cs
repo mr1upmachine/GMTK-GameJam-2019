@@ -25,8 +25,11 @@ public class SceneManagerScript : MonoBehaviour
         if (hasPauseMenu && PauseMenu == null) Instantiate(PauseMenu);
         if (hasGameOverMenu && GameOverMenu == null) Instantiate(GameOverMenu);
 
-        score.text = GameManager.instance.GetCurrentScore().ToString();
-        wave.text = waveManager.GetWaveNumber().ToString();
+        if (score != null)
+        {
+            score.text = GameManager.instance.GetCurrentScore().ToString();
+            wave.text = waveManager.GetWaveNumber().ToString();
+        }
     }
 
     void Update()
@@ -52,20 +55,25 @@ public class SceneManagerScript : MonoBehaviour
             ReloadCurrentScene();
         }
 
-        if (GameManager.instance.GetCurrentScore() > int.Parse(score.text))
+        if (score != null)
         {
-            score.text = GameManager.instance.GetCurrentScore().ToString();
-        }
+            if (GameManager.instance.GetCurrentScore() > int.Parse(score.text))
+            {
+                score.text = GameManager.instance.GetCurrentScore().ToString();
+            }
 
-        if (waveManager.GetWaveNumber() > int.Parse(wave.text))
-        {
-            wave.text = waveManager.GetWaveNumber().ToString();
+            if (waveManager.GetWaveNumber() > int.Parse(wave.text))
+            {
+                wave.text = waveManager.GetWaveNumber().ToString();
+            }
         }
     }
 
     public void ReloadCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.instance.SetScore(0);
+        GameManager.instance.colorState = ColorState.RED;
         GameManager.instance.PlayGame();
     }
 
