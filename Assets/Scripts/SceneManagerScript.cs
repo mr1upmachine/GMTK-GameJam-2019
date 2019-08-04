@@ -6,35 +6,23 @@ using UnityEngine.UI;
 
 public class SceneManagerScript : MonoBehaviour
 {
-    public Scene nextScene;
-    public Scene gameOver;
-    public Scene mainMenu;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string nextScene;
+    public string gameOver;
+    public string mainMenu;
 
     public void LoadNextScene()
     {
         if (nextScene != null)
         {
-            SceneManager.LoadScene(nextScene.buildIndex);
+            SceneManager.LoadScene(nextScene);
         }
     }
-    
+
     public void LoadGameOver()
     {
         if (nextScene != null)
         {
-            SceneManager.LoadScene(gameOver.buildIndex);
+            SceneManager.LoadScene(gameOver);
         }
     }
 
@@ -42,9 +30,7 @@ public class SceneManagerScript : MonoBehaviour
     {
         if (mainMenu != null)
         {
-            SceneManager.LoadScene(mainMenu.buildIndex);
+            SceneManager.LoadScene(mainMenu);
         }
     }
-
-
 }
