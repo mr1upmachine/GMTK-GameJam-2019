@@ -112,6 +112,7 @@ public class StateCheck : MonoBehaviour
             body.velocity = velocity;
             body.mass = mass;
             hasBeenDisabled = false;
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         }
     }
 
@@ -126,6 +127,7 @@ public class StateCheck : MonoBehaviour
             body.velocity = new Vector2(0,0);
             body.mass = 100000f;
             hasBeenDisabled = true;
+            transform.position = new Vector3(transform.position.x, transform.position.y, 1f);
         }
     }
 }
