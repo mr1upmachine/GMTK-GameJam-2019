@@ -49,12 +49,7 @@ public class EnemyFollow : MonoBehaviour
     void OnCollisionEnter2D (Collision2D hitInfo)
     {
         //Ensures projectiles fired by enemies don't damage other enemys
-        if(hitInfo.gameObject.tag == gameObject.tag){
-            return;
-        }
-
-        if(eHealth.dead)
-        {
+        if(hitInfo.gameObject.tag == gameObject.tag || eHealth.dead){
             return;
         }
 
