@@ -44,6 +44,7 @@ public class WarpColorSwitch : MonoBehaviour
                 warpBlue.GetComponent<ParticleSystem>().Stop();
                 break;
             case ColorState.BLUE:
+            currentState = ColorState.BLUE;
                 warpGreen.GetComponent<ParticleSystem>().Stop();
                 warpBlue.GetComponent<ParticleSystem>().Play();
                 warpRed.GetComponent<ParticleSystem>().Stop();

@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 96606241}
   - component: {fileID: 96606242}
   - component: {fileID: 96606243}
+  - component: {fileID: 96606244}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -225,7 +226,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.2830189, g: 0.033374865, b: 0.033374865, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -367,6 +368,21 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &96606244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96606237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e448046312eae13438507bc090ec1e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redColor: {r: 0.28235295, g: 0.03529412, b: 0.03529412, a: 1}
+  greenColor: {r: 0.03529412, g: 0.28235295, b: 0.03529412, a: 1}
+  blueColor: {r: 0.03529412, g: 0.03529412, b: 0.28235295, a: 1}
 --- !u!1 &264242737 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 202468428194555826, guid: 38a1703612bed774ba20cb28a37fad3d,
@@ -1375,7 +1391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorState: 0
-  scoreForStateChange: 1000
+  scoreForStateChange: 5000
 --- !u!4 &1795999468
 Transform:
   m_ObjectHideFlags: 0
@@ -1629,7 +1645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2118368750
 Transform:
   m_ObjectHideFlags: 0
