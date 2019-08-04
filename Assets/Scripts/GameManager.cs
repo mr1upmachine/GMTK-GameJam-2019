@@ -65,7 +65,6 @@ public class GameManager : MonoBehaviour
         {
             colorState = ColorState.RED;
         }
-        Debug.Log(colorState);
     }
 
     public void IncrementGameScore(int pointValue)
