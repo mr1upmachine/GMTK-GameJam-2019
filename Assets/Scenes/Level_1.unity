@@ -1156,6 +1156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1656638931}
   - component: {fileID: 1656638930}
+  - component: {fileID: 1656638932}
   m_Layer: 8
   m_Name: PPV
   m_TagString: Untagged
@@ -1194,6 +1195,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1656638932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656638929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911a678a24715614b8ef4641e6a2a0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: {fileID: 0}
+  vignette: {fileID: 0}
 --- !u!1 &1710613253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6478465185843119821, guid: 3679c6d8cb97df249a89c0f6c24505e5,
