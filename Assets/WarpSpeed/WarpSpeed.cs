@@ -6,7 +6,7 @@ public class WarpSpeed : MonoBehaviour {
 	public float Speed;
 	ParticleSystem particles;
 	ParticleSystemRenderer rend;
-	bool isWarping;
+	bool isWarping = true;
 
 	void Awake()
 	{
