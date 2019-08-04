@@ -6,11 +6,15 @@ public class StateCheck : MonoBehaviour
 {
     public Sprite activeSprite;
     public Sprite inactiveSprite;
+    public Sprite altSprite;
 
     private ColorState currentState;
     private Vector2 velocity;
     private float mass;
-    public bool isDisabled = false;
+    public bool isDisabled;
+    private bool isAlt;
+
+    public float altTimer = 1f; 
 
     private SpriteRenderer spriteRender;
     private Rigidbody2D body;
@@ -23,6 +27,7 @@ public class StateCheck : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         collision = GetComponent<Collider2D>();
 
+        StartCoroutine(SetAltInterval());
         CheckState();
     }
 
@@ -93,5 +98,35 @@ public class StateCheck : MonoBehaviour
             isDisabled = true;
             transform.position = new Vector3(transform.position.x, transform.position.y, 1f);
         }
+    }
+
+    IEnumerator SetAltInterval()
+    {
+        for (; ; )
+        {
+            if (!isDisabled)
+            {
+                toggleAlt();
+            }
+
+
+            yield return new WaitForSeconds(altTimer);
+        }
+    }
+
+    private void toggleAlt()
+    {
+        if (isAlt)
+        {
+            spriteRender.sprite = activeSprite;
+        }
+        else
+        {
+            spriteRender.sprite = altSprite;
+        }
+        Debug.Log("A" + isAlt);
+        isAlt = !isAlt;
+        Debug.Log("B" + isAlt);
+        Debug.Log("----------------");
     }
 }

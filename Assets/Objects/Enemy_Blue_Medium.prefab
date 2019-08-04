@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 1199741721}
   - component: {fileID: 1528552079}
   - component: {fileID: 1528552078}
-  - component: {fileID: 3555604999534546022}
   m_Layer: 0
   m_Name: Enemy_Blue_Medium
   m_TagString: BLUE
@@ -190,6 +189,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeSprite: {fileID: 21300000, guid: 59f2fc5cc81db5c469a518147abe86ea, type: 3}
   inactiveSprite: {fileID: 21300000, guid: 4bcbda3627a2ceb439901bddf2e7a361, type: 3}
+  altSprite: {fileID: 21300000, guid: 630681db928bdf04986de43fd078a829, type: 3}
+  isDisabled: 0
+  isAlt: 0
+  altTimer: 750
 --- !u!114 &1528552075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4943,17 +4946,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &3555604999534546022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3134412713251337003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b6f7447f48a5aa44ac9170aaebf215d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeSprite: {fileID: 21300000, guid: 59f2fc5cc81db5c469a518147abe86ea, type: 3}
-  inactiveSprite: {fileID: 21300000, guid: 4bcbda3627a2ceb439901bddf2e7a361, type: 3}

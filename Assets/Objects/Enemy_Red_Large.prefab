@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 2005616555}
   - component: {fileID: 1391371918}
   - component: {fileID: 1391371917}
-  - component: {fileID: 705758419699482448}
   m_Layer: 0
   m_Name: Enemy_Red_Large
   m_TagString: RED
@@ -207,6 +206,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeSprite: {fileID: 21300000, guid: ed9eba5eff81ccc49a11dde6b1cdb829, type: 3}
   inactiveSprite: {fileID: 21300000, guid: e81eda86cbe8099439a207694c5cf96a, type: 3}
+  altSprite: {fileID: 21300000, guid: 88f3c22240640f94d8e68833ff93718c, type: 3}
+  isDisabled: 0
+  isAlt: 0
+  altTimer: 750
 --- !u!114 &1391371914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4960,17 +4963,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &705758419699482448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6710763093051521268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b6f7447f48a5aa44ac9170aaebf215d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeSprite: {fileID: 21300000, guid: ed9eba5eff81ccc49a11dde6b1cdb829, type: 3}
-  inactiveSprite: {fileID: 21300000, guid: e81eda86cbe8099439a207694c5cf96a, type: 3}
