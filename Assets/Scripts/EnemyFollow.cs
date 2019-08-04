@@ -53,6 +53,11 @@ public class EnemyFollow : MonoBehaviour
             return;
         }
 
+        if(eHealth.dead)
+        {
+            return;
+        }
+
         if(hitInfo.gameObject.tag != "Arena")
         {
             //check if colliding option has health script and deal damage if it does

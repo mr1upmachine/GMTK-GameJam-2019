@@ -13,6 +13,8 @@ public class EnemyRanged : MonoBehaviour
     private float nextFire;
     private Health health;
 
+    public int damage = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,24 @@ public class EnemyRanged : MonoBehaviour
         ColorState color = GameManager.instance.colorState;
         if (gameObject.tag.Equals(color.ToString()) && !health.dead){
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90);
+        }
+    }
+
+    void OnCollisionEnter2D (Collision2D hitInfo)
+    {
+        //Ensures projectiles fired by enemies don't damage other enemys
+        if(hitInfo.gameObject.tag == gameObject.tag || health.dead){
+            return;
+        }
+
+        if(hitInfo.gameObject.tag != "Arena")
+        {
+            //check if colliding option has health script and deal damage if it does
+            Health health = hitInfo.gameObject.GetComponent<Health>();
+            if(health != null)
+            {
+                health.TakeDamage(damage);
+            }
         }
     }
 
