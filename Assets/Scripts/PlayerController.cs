@@ -51,19 +51,9 @@ public class PlayerController : MonoBehaviour
     //Used for physics interactions
     void FixedUpdate()
     {
-        //keep diagonal movement from being too fast
-        if (horizontal != 0 && vertical != 0)
-        {
-            body.AddForce(new Vector2(horizontal * acceleration * 0.65f, vertical * acceleration * 0.65f));
-        } else
-        {
-            body.AddForce(new Vector2(horizontal * acceleration, vertical * acceleration));
-        }
-
         if (body.velocity.magnitude > maxSpeed)
         {
             body.velocity = body.velocity.normalized * maxSpeed;
-            Debug.Log(body.velocity);
         }
     }
 
@@ -78,6 +68,12 @@ public class PlayerController : MonoBehaviour
             waitFire = 0;
             GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
             bullet.tag = "Player";
+
+            float degreeX = body.rotation * -1f;
+            float degreeY = body.rotation;
+            float fX = Mathf.Sin(degreeX * Mathf.Deg2Rad);
+            float fY = Mathf.Cos(degreeY * Mathf.Deg2Rad);
+            body.AddForce(new Vector2(acceleration * fX * -1f, acceleration * fY * -1f));
         }
     }
 }
