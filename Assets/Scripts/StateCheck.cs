@@ -6,120 +6,92 @@ public class StateCheck : MonoBehaviour
 {
     public Sprite activeSprite;
     public Sprite inactiveSprite;
-    private int currentState = 0;
-    public Vector2 velocity;
-    private bool hasBeenDisabled = false;
+
+    private ColorState currentState;
+    private Vector2 velocity;
+    private float mass;
+    public bool isDisabled = false;
 
     private SpriteRenderer spriteRender;
     private Rigidbody2D body;
+    private Collider2D collision;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRender = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
+        collision = GetComponent<Collider2D>();
 
-        //Checks the object tag and compares with current color state
-        switch(GameManager.instance.colorState)
-        {
-            case ColorState.RED:
-                if(gameObject.tag.Contains("RED") && currentState != 1){
-                    activate();
-                }else if(!gameObject.tag.Contains("RED") && currentState != 1){
-                    deactivate();
-                }
-                currentState = 1;
-                break;
-            case ColorState.GREEN:
-                if(gameObject.tag.Contains("GREEN") && currentState != 2){
-                    activate();
-                }else if(!gameObject.tag.Contains("GREEN") && currentState != 2){
-                    deactivate();
-                }
-                currentState = 2;
-                break;
-            case ColorState.BLUE:
-                if(gameObject.tag.Contains("BLUE") && currentState != 3){
-                    activate();
-                }else if(!gameObject.tag.Contains("BLUE") && currentState != 3){
-                    deactivate();
-                }
-                currentState = 3;
-                break;
-            default:
-                Debug.Log("Can't find color state, defaulting to red!");
-                if(gameObject.tag.Contains("RED")){
-                    activate();
-                }else if(!gameObject.tag.Contains("RED")){
-                    deactivate();
-                }
-                currentState = 1;
-                break;
-        }
+        CheckState();
     }
 
     void FixedUpdate()
     {
+        if (currentState == GameManager.instance.colorState) return;
+
+        CheckState();
+    }
+
+    void CheckState()
+    {
         //Checks the object tag and compares with current color state
-        switch(GameManager.instance.colorState)
+        switch (GameManager.instance.colorState)
         {
             case ColorState.RED:
-                if(gameObject.tag.Contains("RED") && currentState != 1){
+                currentState = ColorState.RED;
+                if (gameObject.tag == "RED")
+                {
                     activate();
-                }else if(!gameObject.tag.Contains("RED") && currentState != 1){
-                    deactivate();
+                    return;
                 }
-                currentState = 1;
                 break;
             case ColorState.GREEN:
-                if(gameObject.tag.Contains("GREEN") && currentState != 2){
+                currentState = ColorState.GREEN;
+                if (gameObject.tag == "GREEN")
+                {
                     activate();
-                }else if(!gameObject.tag.Contains("GREEN") && currentState != 2){
-                    deactivate();
+                    return;
                 }
-                currentState = 2;
                 break;
             case ColorState.BLUE:
-                if(gameObject.tag.Contains("BLUE") && currentState != 3){
+                currentState = ColorState.BLUE;
+                if (gameObject.tag == "BLUE")
+                {
                     activate();
-                }else if(!gameObject.tag.Contains("BLUE") && currentState != 3){
-                    deactivate();
+                    return;
                 }
-                currentState = 3;
-                break;
-            default:
-                Debug.Log("Can't find color state, defaulting to red!");
-                if(gameObject.tag.Contains("RED")){
-                    activate();
-                }else if(!gameObject.tag.Contains("RED")){
-                    deactivate();
-                }
-                currentState = 1;
                 break;
         }
+
+        deactivate();
     }
 
     //Restores previous velocity, changes sprite, and re-enables collision
     void activate()
     {
-        if(hasBeenDisabled)
+        if (isDisabled)
         {
             spriteRender.sprite = activeSprite;
-            body.isKinematic = true;
+            collision.enabled = true;
             body.velocity = velocity;
-            hasBeenDisabled = false;
+            body.mass = 3;
+            isDisabled = false;
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         }
     }
 
     //Changes sprite, stores current velocity, then freezes object and disables collsion
     void deactivate()
     {
-        if(!hasBeenDisabled){
+        if (!isDisabled){
             spriteRender.sprite = inactiveSprite;
             velocity = body.velocity;
-            body.isKinematic = false;
+            collision.enabled = false;
             body.velocity = new Vector2(0,0);
-            hasBeenDisabled = true;
+            body.mass = 100000f;
+            isDisabled = true;
+            transform.position = new Vector3(transform.position.x, transform.position.y, 1f);
         }
     }
 }

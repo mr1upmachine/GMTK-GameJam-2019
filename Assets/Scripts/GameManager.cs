@@ -4,7 +4,7 @@ using UnityEngine;
 
 // valid color states
 public enum ColorState { RED, GREEN, BLUE }
-public enum GameState { MAIN_MENU, GAME_OVER }
+public enum GameState { MAIN_MENU, PLAY, PAUSE, GAME_OVER }
 
 // Commenting out temporarily because I don't know what I wanna do with this atm
 // public delegate void OnStateChangeHandler();
@@ -44,11 +44,10 @@ public class GameManager : MonoBehaviour
     }
 
     void Update() {
-        if(adjustedScore >= scoreForStateChange)
+        if (adjustedScore >= scoreForStateChange)
         {
             adjustedScore = 0;
             ChangeColorState();
-
         }
     }
 
@@ -62,9 +61,8 @@ public class GameManager : MonoBehaviour
         {
             colorState = ColorState.BLUE;
         }
-        else
+        else // if state is BLUE
         {
-            // if state is BLUE
             colorState = ColorState.RED;
         }
     }
@@ -90,5 +88,24 @@ public class GameManager : MonoBehaviour
     public int GetCurrentScore()
     {
         return score;
+    }
+
+    // controls the pausing of the scene
+    public void PauseGame()
+    {
+        gameState = GameState.PAUSE;
+        Time.timeScale = 0;
+    }
+
+    public void PlayGame()
+    {
+        gameState = GameState.PLAY;
+        Time.timeScale = 1;
+    }
+
+    public void GameOver()
+    {
+        gameState = GameState.GAME_OVER;
+        Time.timeScale = 0;
     }
 }
