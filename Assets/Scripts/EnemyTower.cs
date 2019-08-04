@@ -11,12 +11,14 @@ public class EnemyTower : MonoBehaviour
 
     private float nextFire;
     private float degreesBetweenProjectiles;
+    private Health health;
 
     // Start is called before the first frame update
     void Start()
     {
-         nextFire = Time.time + Random.Range(minTimeToFire, maxTimeToFire);
-         degreesBetweenProjectiles = 360 / projectileCount;
+        health = GetComponent<Health>();
+        nextFire = Time.time + Random.Range(minTimeToFire, maxTimeToFire);
+        degreesBetweenProjectiles = 360 / projectileCount;
     }
 
     // Update is called once per frame
@@ -24,7 +26,7 @@ public class EnemyTower : MonoBehaviour
     {
         ColorState color = GameManager.instance.colorState;
         //Randomly fire in intervals set between two different variables
-        if(gameObject.tag.Contains(color.ToString()) && Time.time >= nextFire)
+        if(gameObject.tag.Equals(color.ToString()) && Time.time >= nextFire && !health.dead)
         {
             nextFire = Time.time + Random.Range(minTimeToFire, maxTimeToFire);
             Fire();
