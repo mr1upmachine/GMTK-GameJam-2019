@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     Rigidbody2D body;
 
-    float horizontal;
-    float vertical;
-    float moveLimiter = 0.7f;
-    public float acceleration = 50.0f;
+    public float acceleration = 40.0f;
     public float maxSpeed = 20.0f;
     public int drag = 5;
     public int shootDrag = 25;
     public float shootKnockback = 5f;
 
     public float fireRate = 0.5f;
-    float waitFire;
 
     public Transform position;
     public GameObject projectile;
@@ -35,9 +30,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-
         //Get mouse position and face player towards it
         if (GameManager.instance.gameState != GameState.PAUSE)
         {
@@ -61,6 +53,9 @@ public class PlayerController : MonoBehaviour
     //Used for physics interactions
     void FixedUpdate()
     {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
         //keep diagonal movement from being too fast
         if (horizontal != 0 && vertical != 0)
         {
@@ -80,7 +75,7 @@ public class PlayerController : MonoBehaviour
     void Shoot()
     {
         //increment firing cooldown
-        waitFire += Time.deltaTime;
+        float waitFire += Time.deltaTime;
 
         //check firing cooldown to ensure projectiles aren't being fired too quickly
         if (waitFire > fireRate)
