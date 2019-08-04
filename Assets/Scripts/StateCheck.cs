@@ -7,7 +7,8 @@ public class StateCheck : MonoBehaviour
     public Sprite activeSprite;
     public Sprite inactiveSprite;
     private int currentState = 0;
-    public Vector2 velocity;
+    private Vector2 velocity;
+    private float mass;
     private bool hasBeenDisabled = false;
 
     private SpriteRenderer spriteRender;
@@ -109,6 +110,7 @@ public class StateCheck : MonoBehaviour
             spriteRender.sprite = activeSprite;
             collision.enabled = true;
             body.velocity = velocity;
+            body.mass = mass;
             hasBeenDisabled = false;
         }
     }
@@ -119,8 +121,10 @@ public class StateCheck : MonoBehaviour
         if(!hasBeenDisabled){
             spriteRender.sprite = inactiveSprite;
             velocity = body.velocity;
+            mass = body.mass;
             collision.enabled = false;
             body.velocity = new Vector2(0,0);
+            body.mass = 100000f;
             hasBeenDisabled = true;
         }
     }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7781456511756644033}
   - component: {fileID: 1120187057}
   - component: {fileID: 1120187062}
+  - component: {fileID: 1120187064}
   m_Layer: 0
   m_Name: Enemy_Green_Small
   m_TagString: GREEN
@@ -92,11 +93,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335915364227437431}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -145,7 +146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeSprite: {fileID: 21300000, guid: b5fcef7976c170b4db26e1516dbd51a3, type: 3}
   inactiveSprite: {fileID: 21300000, guid: c62894b074b76c04aa3df7ded1dffc41, type: 3}
-  velocity: {x: 0, y: 0}
 --- !u!114 &1120187062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,3 +160,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   pointValue: 100
+--- !u!114 &1120187064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335915364227437431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe2fc8ddb485384ba61d36ebc737c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 6
+  stoppingDistance: 0
