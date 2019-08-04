@@ -9,7 +9,7 @@ using UnityEngine;
 public class HighScoreManager : MonoBehaviour
 {
     public static HighScoreManager instance = null;
-    private const int leaderboardLength = 5;
+    private const int leaderboardLength = 8;
 
     private void Awake()
     {
