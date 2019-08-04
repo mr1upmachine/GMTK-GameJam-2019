@@ -22,6 +22,7 @@ public class MusicManager : MonoBehaviour
         foreach(AudioSource i in audioSources)
         {
             i.Play();
+            i.loop = true;
             i.volume = 0;
         }
         audioSources[0].volume = 1;
