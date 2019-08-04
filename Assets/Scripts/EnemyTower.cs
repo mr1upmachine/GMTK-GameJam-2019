@@ -12,6 +12,7 @@ public class EnemyTower : MonoBehaviour
     private float nextFire;
     private float degreesBetweenProjectiles;
     private Health health;
+    public int damage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,24 @@ public class EnemyTower : MonoBehaviour
         {
             nextFire = Time.time + Random.Range(minTimeToFire, maxTimeToFire);
             Fire();
+        }
+    }
+
+    void OnCollisionEnter2D (Collision2D hitInfo)
+    {
+        //Ensures projectiles fired by enemies don't damage other enemys
+        if(hitInfo.gameObject.tag == gameObject.tag || health.dead){
+            return;
+        }
+
+        if(hitInfo.gameObject.tag != "Arena")
+        {
+            //check if colliding option has health script and deal damage if it does
+            Health health = hitInfo.gameObject.GetComponent<Health>();
+            if(health != null)
+            {
+                health.TakeDamage(damage);
+            }
         }
     }
 
