@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5420740542924389514}
   - component: {fileID: 1205492659544044973}
   - component: {fileID: 5684419800611216458}
-  - component: {fileID: 4608851393116957794}
   - component: {fileID: 834420364110572370}
+  - component: {fileID: 6038919388036205400}
   m_Layer: 0
   m_Name: Bullet_Blue
   m_TagString: BLUE
@@ -121,21 +121,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.02967447}
   serializedVersion: 2
   m_Radius: 0.6057605
---- !u!114 &4608851393116957794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7987205786969535042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b6f7447f48a5aa44ac9170aaebf215d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeSprite: {fileID: 21300000, guid: 6c2ff5fd013a47e4799eb36f031c077c, type: 3}
-  inactiveSprite: {fileID: 21300000, guid: 6c2ff5fd013a47e4799eb36f031c077c, type: 3}
-  velocity: {x: 0, y: 0}
 --- !u!114 &834420364110572370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,5 +133,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd56323a8a20c14484dcee2620e5bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 6
   damage: 1
+--- !u!114 &6038919388036205400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987205786969535042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21140ffd1351ab04c8b39d740645f58a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4440238713736905942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4440238713736905936}
+  - component: {fileID: 4440238713736905937}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4440238713736905936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440238713736905942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.39494145, y: 1.1891282, z: -4.679476}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4440238713736905937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440238713736905942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf34a5aae9a6b59479834fb748880480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greenSmall: {fileID: 335915364227437431, guid: c35f65e11b47f9d4eae8010561dafa3c,
+    type: 3}
+  greenMedium: {fileID: 137799332516789527, guid: 2aad3107003198c4d9060e985016f59f,
+    type: 3}
+  greenLarge: {fileID: 5187589624211507540, guid: 5caf0470bd848db4383240e0614d396e,
+    type: 3}
+  redSmall: {fileID: 6478465185843119821, guid: 3679c6d8cb97df249a89c0f6c24505e5,
+    type: 3}
+  redMedium: {fileID: 6336356861260749302, guid: b62a3f9571700bd448caef6f9eb27acb,
+    type: 3}
+  redLarge: {fileID: 6710763093051521268, guid: b61cd63b00b394b4c9ed62822c544a9b,
+    type: 3}
+  blueSmall: {fileID: 202468428194555826, guid: 38a1703612bed774ba20cb28a37fad3d,
+    type: 3}
+  blueMedium: {fileID: 3134412713251337003, guid: 93e084628a89eda4696f665ff5f0282a,
+    type: 3}
+  blueLarge: {fileID: 5704248712892012660, guid: 63bfecb84b1db7240966c0668833334e,
+    type: 3}
+  greenSmallPercentage: 65
+  greenMediumPercentage: 25
+  greenLargePercentage: 10
+  blueSmallPercentage: 65
+  blueMediumPercentage: 25
+  blueLargePercentage: 10
+  redSmallPercentage: 65
+  redMediumPercentage: 25
+  redLargePercentage: 10
+  stopSpawning: 0
+  maxWaveSpawnInterval: 30
+  minWaveSpawnInterval: 5
+  waveSpawnModifier: 0.8
+  maxEnemiesPerWave: 60
+  minEnemiesPerWave: 20
+  enemySpawnModifier: 1.2

@@ -38,10 +38,10 @@ public class WaveManager : MonoBehaviour
     public float enemySpawnModifier; // modifier that scales how fast the enemies ramp between waves (higher than 1)
     private float enemiesPerWave;
     private int waveNumber;
-    
+
 
     private GameObject[] spawnPoints;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +55,7 @@ public class WaveManager : MonoBehaviour
         {
             enemySpawnModifier = 1.01f;
         }
-        
+
         waveNumber = 0;
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
         waveMod = 1f;
@@ -79,7 +79,6 @@ public class WaveManager : MonoBehaviour
     {
         for (;;)
         {
-            
             for (int i = 0; i < Mathf.Ceil(enemiesPerWave); i++)
             {
                 switch (Mathf.Floor((i % 3)))

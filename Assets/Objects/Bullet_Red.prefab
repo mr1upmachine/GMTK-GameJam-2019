@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7781732467726398783}
   - component: {fileID: 1460222176515010209}
   - component: {fileID: 2708678251296603204}
-  - component: {fileID: 4113760160949998775}
   - component: {fileID: 61868049648025322}
+  - component: {fileID: 4666683368235916766}
   m_Layer: 0
   m_Name: Bullet_Red
   m_TagString: RED
@@ -151,20 +151,6 @@ PolygonCollider2D:
     - - {x: 0.01995325, y: -0.03497541}
       - {x: -0.056726933, y: -0.124959946}
       - {x: 0.020031929, y: -0.17338693}
---- !u!114 &4113760160949998775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8676999200302585357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b6f7447f48a5aa44ac9170aaebf215d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeSprite: {fileID: 21300000, guid: 9a8ea8b292c602640a6ff8bff7c47ab5, type: 3}
-  inactiveSprite: {fileID: 21300000, guid: 9a8ea8b292c602640a6ff8bff7c47ab5, type: 3}
 --- !u!114 &61868049648025322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,5 +163,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd56323a8a20c14484dcee2620e5bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 6
   damage: 1
+--- !u!114 &4666683368235916766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8676999200302585357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21140ffd1351ab04c8b39d740645f58a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5280622689645893885}
   - component: {fileID: 2978964548633067633}
   - component: {fileID: 5392709260938234071}
-  - component: {fileID: 5884080918655771687}
   - component: {fileID: 7354278287659675973}
+  - component: {fileID: 7152065082188017454}
   m_Layer: 0
   m_Name: Bullet_Green
   m_TagString: GREEN
@@ -131,21 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.935521, y: 1.05918}
   m_EdgeRadius: 0
---- !u!114 &5884080918655771687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2716225102401422746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b6f7447f48a5aa44ac9170aaebf215d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeSprite: {fileID: 21300000, guid: 268351913291bb7438cbb4e41c1e2975, type: 3}
-  inactiveSprite: {fileID: 21300000, guid: 268351913291bb7438cbb4e41c1e2975, type: 3}
-  velocity: {x: 0, y: 0}
 --- !u!114 &7354278287659675973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,5 +143,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd56323a8a20c14484dcee2620e5bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 6
   damage: 1
+--- !u!114 &7152065082188017454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2716225102401422746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21140ffd1351ab04c8b39d740645f58a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
