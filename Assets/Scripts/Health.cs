@@ -6,6 +6,8 @@ public class Health : MonoBehaviour
 {
     public int health = 1;
     public int pointValue = 100;
+    public AudioClip enemyDeath;
+    public AudioClip playerDeath;
 
     private ParticleSystem particle;
     private SpriteRenderer sprite;
@@ -13,6 +15,7 @@ public class Health : MonoBehaviour
     private CircleCollider2D cirCol;
     private CapsuleCollider2D capCol;
     private BoxCollider2D boxCol;
+    private AudioSource audioSource;
     public bool dead = false;
 
     void Start()
@@ -23,6 +26,7 @@ public class Health : MonoBehaviour
         cirCol = GetComponent<CircleCollider2D>();
         capCol = GetComponent<CapsuleCollider2D>();
         boxCol = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     //projectiles call this function to damage a character
@@ -47,6 +51,7 @@ public class Health : MonoBehaviour
             if(cirCol != null) cirCol.enabled = false;
             if(capCol != null) capCol.enabled = false;
             if(boxCol != null) boxCol.enabled = false;
+            audioSource.PlayOneShot(playerDeath);
             GameManager.instance.GameOver();
         }else{
             GameManager.instance.IncrementGameScore(pointValue);
@@ -56,6 +61,7 @@ public class Health : MonoBehaviour
             if(cirCol != null) cirCol.enabled = false;
             if(capCol != null) capCol.enabled = false;
             if(boxCol != null) boxCol.enabled = false;
+            audioSource.PlayOneShot(enemyDeath);
             Destroy(gameObject, 2f);
         }
     }

@@ -235,6 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   pointValue: 500
+  enemyDeath: {fileID: 8300000, guid: ba1b69ec2f2610e4788977b4385a479a, type: 3}
+  playerDeath: {fileID: 8300000, guid: 377ff26b222177f4aaa6c0b982940696, type: 3}
   dead: 0
 --- !u!114 &1629642318
 MonoBehaviour:

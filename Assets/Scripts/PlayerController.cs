@@ -21,11 +21,15 @@ public class PlayerController : MonoBehaviour
 
     private bool isFiring = false;
 
+    private AudioSource audioSource;
+    public AudioClip shoot;
+
     // Start is called before the first frame update
     void Start()
     {
         //get Rigidbody2D on start
         body = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         body.drag = drag;
     }
 
@@ -86,7 +90,9 @@ public class PlayerController : MonoBehaviour
             GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
             bullet.tag = "Player";
 
-            // Pushes the player back slightly when 
+            audioSource.PlayOneShot(shoot);
+
+            // Pushes the player back slightly when
             float degreeX = body.rotation * -1f;
             float degreeY = body.rotation;
             float fX = Mathf.Sin(degreeX * Mathf.Deg2Rad);
