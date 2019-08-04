@@ -10,7 +10,7 @@ public class StateCheck : MonoBehaviour
     private ColorState currentState;
     private Vector2 velocity;
     private float mass;
-    private bool hasBeenDisabled = false;
+    public bool isDisabled = false;
 
     private SpriteRenderer spriteRender;
     private Rigidbody2D body;
@@ -70,13 +70,13 @@ public class StateCheck : MonoBehaviour
     //Restores previous velocity, changes sprite, and re-enables collision
     void activate()
     {
-        if (hasBeenDisabled)
+        if (isDisabled)
         {
             spriteRender.sprite = activeSprite;
             collision.enabled = true;
             body.velocity = velocity;
             body.mass = 3;
-            hasBeenDisabled = false;
+            isDisabled = false;
             transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         }
     }
@@ -84,13 +84,13 @@ public class StateCheck : MonoBehaviour
     //Changes sprite, stores current velocity, then freezes object and disables collsion
     void deactivate()
     {
-        if (!hasBeenDisabled){
+        if (!isDisabled){
             spriteRender.sprite = inactiveSprite;
             velocity = body.velocity;
             collision.enabled = false;
             body.velocity = new Vector2(0,0);
             body.mass = 100000f;
-            hasBeenDisabled = true;
+            isDisabled = true;
             transform.position = new Vector3(transform.position.x, transform.position.y, 1f);
         }
     }
