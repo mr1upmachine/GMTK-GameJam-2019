@@ -9,7 +9,7 @@ using UnityEngine;
 public class HighScoreManager : MonoBehaviour
 {
     public static HighScoreManager instance = null;
-    private const int leaderboardLength = 10;
+    private const int leaderboardLength = 5;
 
     private void Awake()
     {
@@ -76,18 +76,36 @@ public class HighScoreManager : MonoBehaviour
         }
     }
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    public List<Scores> GetHighScores()
     {
-        
+        List<Scores> HighScores = new List<Scores>();
+
+        int i = 1;
+        while(i <= leaderboardLength && PlayerPrefs.HasKey("HighScore" + i + "score"))
+        {
+            Scores temp = new Scores();
+            temp.score = PlayerPrefs.GetInt("HighScore" + i + "score");
+            temp.name = PlayerPrefs.GetString("HighScore" + i + "name");
+            HighScores.Add(temp);
+            i++;
+        }
+        return HighScores;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ClearLeaderBoard()
     {
-        
+        List<Scores> HighScores = GetHighScores();
+
+        for (int i = 1; i <= HighScores.Count; i++)
+        {
+            PlayerPrefs.DeleteKey("HighScore" + i + "name");
+            PlayerPrefs.DeleteKey("HighScore" + i + "score");
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
     }
 
     public class Scores
