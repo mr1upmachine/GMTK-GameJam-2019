@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
     private int score;
     private int adjustedScore;
 
-    public GameObject PauseMenu;
-
     private void Awake()
     {
         if (instance == null)
@@ -38,8 +36,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PauseMenu.SetActive(false);
-
         // init the original color state to red on object start (post awake)
         colorState = ColorState.RED;
 
@@ -48,16 +44,11 @@ public class GameManager : MonoBehaviour
     }
 
     void Update() {
-        if(adjustedScore >= scoreForStateChange)
+        if (adjustedScore >= scoreForStateChange)
         {
             adjustedScore = 0;
             ChangeColorState();
 
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PauseControl();
         }
     }
 
@@ -102,19 +93,15 @@ public class GameManager : MonoBehaviour
     }
 
     // controls the pausing of the scene
-    public void PauseControl()
+    public void PauseGame()
     {
-        if (Time.timeScale == 1)
-        {
-            gameState = GameState.PAUSE;
-            Time.timeScale = 0;
-            PauseMenu.SetActive(true);
-        }
-        else if (Time.timeScale == 0)
-        {
-            gameState = GameState.PLAY;
-            Time.timeScale = 1;
-            PauseMenu.SetActive(false);
-        }
+        gameState = GameState.PAUSE;
+        Time.timeScale = 0;
+    }
+
+    public void PlayGame()
+    {
+        gameState = GameState.PLAY;
+        Time.timeScale = 1;
     }
 }
