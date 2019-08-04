@@ -140,8 +140,7 @@ MonoBehaviour:
   inactiveSprite: {fileID: 21300000, guid: 300da0620380a9d49b8ecc1862be93e2, type: 3}
   altSprite: {fileID: 21300000, guid: 6181d5abe44e1fc479d7610145dd0c63, type: 3}
   isDisabled: 0
-  isAlt: 0
-  altTimer: 750
+  altTimer: 1
 --- !u!114 &264242743
 MonoBehaviour:
   m_ObjectHideFlags: 0

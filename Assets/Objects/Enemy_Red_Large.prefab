@@ -208,8 +208,7 @@ MonoBehaviour:
   inactiveSprite: {fileID: 21300000, guid: e81eda86cbe8099439a207694c5cf96a, type: 3}
   altSprite: {fileID: 21300000, guid: 88f3c22240640f94d8e68833ff93718c, type: 3}
   isDisabled: 0
-  isAlt: 0
-  altTimer: 750
+  altTimer: 1
 --- !u!114 &1391371914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +241,7 @@ MonoBehaviour:
   projectileCount: 6
   projectile: {fileID: 8676999200302585357, guid: a6bdf19875c8b5f4cb213af79e969295,
     type: 3}
+  damage: 1
 --- !u!198 &1391371918
 ParticleSystem:
   m_ObjectHideFlags: 0

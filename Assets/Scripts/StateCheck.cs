@@ -27,7 +27,7 @@ public class StateCheck : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         collision = GetComponent<Collider2D>();
 
-        StartCoroutine(SetAltInterval());
+        InvokeRepeating("toggleAlt", 0f, altTimer);
         CheckState();
     }
 
@@ -100,22 +100,10 @@ public class StateCheck : MonoBehaviour
         }
     }
 
-    IEnumerator SetAltInterval()
-    {
-        for (; ; )
-        {
-            if (!isDisabled)
-            {
-                toggleAlt();
-            }
-
-
-            yield return new WaitForSeconds(altTimer);
-        }
-    }
-
     private void toggleAlt()
     {
+        if (isDisabled) return;
+
         if (isAlt)
         {
             spriteRender.sprite = activeSprite;
@@ -124,9 +112,6 @@ public class StateCheck : MonoBehaviour
         {
             spriteRender.sprite = altSprite;
         }
-        Debug.Log("A" + isAlt);
         isAlt = !isAlt;
-        Debug.Log("B" + isAlt);
-        Debug.Log("----------------");
     }
 }
