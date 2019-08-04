@@ -42,7 +42,8 @@ public class GameManager : MonoBehaviour
         score = 0;
     }
 
-    void Update() {
+    void Update()
+    {
         if (adjustedScore >= scoreForStateChange)
         {
             adjustedScore = 0;
@@ -111,5 +112,10 @@ public class GameManager : MonoBehaviour
     public void SetScore(int score)
     {
         this.score = score;
+    }
+
+    public void ResetAdjustedScore()
+    {
+        adjustedScore = 0;
     }
 }

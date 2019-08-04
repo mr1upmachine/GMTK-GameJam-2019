@@ -39,7 +39,7 @@ public class WaveManager : MonoBehaviour
     private float enemiesPerWave;
     private int waveNumber;
 
-
+    private List<GameObject> enemiesSpawned = new List<GameObject>();
     private GameObject[] spawnPoints;
 
     // Start is called before the first frame update
@@ -67,12 +67,54 @@ public class WaveManager : MonoBehaviour
         // InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
     }
 
+    void Update()
+    {
+        int redCount = 0;
+        int greenCount = 0;
+        int blueCount = 0;
+        if (enemiesSpawned != null)
+        {
+            for (int i = 0; i < enemiesSpawned.Count; i++)
+            {
+                if (enemiesSpawned[i].tag == "GREEN")
+                {
+                    greenCount++;
+                }
+                else if (enemiesSpawned[i].tag == "RED")
+                {
+                    redCount++;
+                }
+                else if (enemiesSpawned[i].tag == "BLUE")
+                {
+                    blueCount++;
+                }
+            }
+
+            if (GameManager.instance.colorState == ColorState.GREEN && greenCount == 0)
+            {
+                GameManager.instance.ResetAdjustedScore();
+                GameManager.instance.ChangeColorState();
+            }
+            else if (GameManager.instance.colorState == ColorState.BLUE && blueCount == 0)
+            {
+                GameManager.instance.ResetAdjustedScore();
+                GameManager.instance.ChangeColorState();
+            }
+            else if (GameManager.instance.colorState == ColorState.RED && redCount == 0)
+            {
+                GameManager.instance.ResetAdjustedScore();
+                GameManager.instance.ChangeColorState();
+            }
+        }
+    }
+
     public void SpawnObject(ColorState color, GameObject spawnPoint, GameObject enemyFab)
     {
         // will change this to be spawnPoint.position and rotation instead of `this`
         // also might need to make handling to spawn enemies of a specific color
         GameObject enemy = Instantiate(enemyFab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         enemy.tag = color.ToString();
+        enemiesSpawned.Add(enemy);
     }
 
     IEnumerator SpawnWave()
